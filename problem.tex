@@ -1,0 +1,28 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\begin{document}
+\title{Find all values of $r$ such that $8\cdot10^r+1$ is a perfect square}
+\author{Liam Gardner}
+\date{\today}
+\maketitle
+\newcommand{\Mod}[2]{({#1}\operatorname{ mod } {#2})}
+Assuming $8\cdot10^r+1$ is a perfect square, let $n^2 = 8\cdot10^r+1$. We can rearrange to get $8\cdot10^r = (n+1)(n-1)$.
+If we divide by $8$, we find that $10^r = \frac{1}{8}(n-1)(n+1)$. From there, we can use base 10 logarithms to isolate for r. This can be written as a function of n.
+\begin{equation}
+f(n) = \log\Big(\frac{1}{8}(n-1)(n+1)\Big)
+\end{equation}
+The question then becomes, what values of $n$ will $f(n)$ return a positive integer. Either $n-1$ or $n+1$ must divide into 8. The remainder of that division multiplied by the compliment must be a power of 10. If $8 | n-1$ then $\frac{(n-1)}{8}(n+1)$ must be representable as $10^k$ for $\{k \in \mathbb{Z}^+\}$.
+\newline
+How can integers $n$ and $q$ in the form $q(n+1) = 10^k$ for $\{k \in \mathbb{Z}^+\}$?
+\newline
+Let $q = \frac{n-1}{8}$.
+\newline
+Both $n+1$ and $q$ must be in the form $10^k$. If $n+1=10^a$ and $q = 10^b$ then $q(n+1)$ will be in the form $10^{a+b}$ which is in the form $10^k$. This would mean, that all digits composing $n$ must be 9. If all digits of $n$ must be 9. Then $n-1$ will only be divisible by 8 if $n=9$. For all integer values of $\alpha>2$, $\Mod{10^\alpha-2}{8}$ are equal to 6 and $\Mod{10^2-2}{8} = 2$. We know that the only existing value for $n$ is 9. $f(9) = 1$. 
+\newline
+The second case is if $(n+1)$ divides by 8. If $(n+1)$ divides into 8, then $(n-1)$ must be in the form of $10^k$ which means that $n$ is in the form of $10^k + 1$ and thus $n+1$ is in the form of $10^k+2$. $\Mod{10^0 + 2}{8} = 3$, $\Mod{10^1+2}{8} = 4$, $\Mod{10^2+2}{8}=6$ and finally, 
+$\Mod{10^k+2}{8} = 2$ for $\{k \in \mathbb{Z^+} | k > 2\}$. Since there would be no value for $n$ in which $n+1$ could divide into 8, we know that the second case provides no solutions. Thus, the only values available for $r$ come from the first case, and are $r=0$ and $r=1$.
+\newline
+$$\sqrt{8\cdot10^0 + 1} = \sqrt{9} = 3$$
+$$\sqrt{8\cdot10^1 + 1}  = \sqrt{81} = 9$$
+\end{document}
